@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-multi-input",
-  "version": "0.0.1-alpha",
+  "version": "0.1.1",
   "description": "rollup plugin for multiple input using glob",
   "main": "dist/plugin.js",
   "esnext": "src/plugin.js",

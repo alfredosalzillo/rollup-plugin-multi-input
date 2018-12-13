@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _fastGlob = _interopRequireDefault(require("fast-glob"));
 
+var _path = _interopRequireDefault(require("path"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -26,7 +28,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 * */
 var _default = function _default() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      glob = _ref.glob;
+      glob = _ref.glob,
+      _ref$relative = _ref.relative,
+      relative = _ref$relative === void 0 ? 'src/' : _ref$relative;
 
   var flatter = function flatter() {
     return function (acc, a) {
@@ -34,12 +38,16 @@ var _default = function _default() {
     };
   };
 
+  var formatName = function formatName(name) {
+    return _path["default"].relative(relative, name).replace(/\.[^/.]+$/, '');
+  };
+
   var options = function options(conf) {
     var input = conf.input,
         experimentalCodeSplitting = conf.experimentalCodeSplitting;
     if (!experimentalCodeSplitting) throw new Error('experimentalCodeSplitting required to be true');
     var inputGlobed = Object.assign.apply(Object, [{}].concat(_toConsumableArray(_fastGlob["default"].sync([input].reduce(flatter(), []), glob).map(function (name) {
-      return _defineProperty({}, name.replace(/\.[^/.]+$/, ''), name);
+      return _defineProperty({}, formatName(name), name);
     }))));
     return _objectSpread({}, conf, {
       input: inputGlobed

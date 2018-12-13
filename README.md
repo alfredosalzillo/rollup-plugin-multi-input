@@ -16,13 +16,34 @@ import multiInput from 'rollup-plugin-multi-input';
 export default {
     input: ['src/**/*.js'],
     experimentalCodeSplitting: true,
-    format: 'esm',
-    dest: 'public/app.min.js',
+    output: {
+      format: 'esm',
+      dir: 'dist'
+    },
     plugins: [ multiInput() ],
 };
 ```
 
 ## Options
 
+### relative `'src/'`
+Specific the relative path to use in the dist folder.
+
+Example:
+```js
+import multiInput from 'rollup-plugin-multi-input';
+
+export default {
+    input: ['src/bar.js', 'src/foo/bar.js'],
+    experimentalCodeSplitting: true,
+    output: {
+      format: 'esm',
+      dir: 'dist'
+    },
+    plugins: [ multiInput({ relative: 'src/' }) ],
+};
+// create the files dist/bar.js and dist/foo/bar.js
+```
+ 
 ### glob `{}`
 [fast-glob](https://github.com/mrmlnc/fast-glob) object configuration.
