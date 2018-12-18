@@ -1,6 +1,8 @@
 # rollup-plugin-multi-input
 
-Let you use glob in input. Preserve the dir structure in the output dir.
+Use multiple entry points in your rollup bundle.
+Let you use glob in input.
+Preserve the dir structure in the output dir.
 
 ## Install
 Install via npm or yarn.
