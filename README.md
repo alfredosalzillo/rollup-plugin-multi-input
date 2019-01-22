@@ -17,7 +17,6 @@ import multiInput from 'rollup-plugin-multi-input';
 
 export default {
     input: ['src/**/*.js'],
-    experimentalCodeSplitting: true,
     output: {
       format: 'esm',
       dir: 'dist'
@@ -25,6 +24,8 @@ export default {
     plugins: [ multiInput() ],
 };
 ```
+If using a rollup lower version than __1.0.0__,
+`experimentalCodeSplitting` must be enabled.
 
 ## Options
 
@@ -37,7 +38,6 @@ import multiInput from 'rollup-plugin-multi-input';
 
 export default {
     input: ['src/bar.js', 'src/foo/bar.js'],
-    experimentalCodeSplitting: true,
     output: {
       format: 'esm',
       dir: 'dist'
