@@ -13,8 +13,7 @@ export default ({
     .relative(relative, name)
     .replace(/\.[^/.]+$/, '');
   const options = (conf) => {
-    const { input, experimentalCodeSplitting } = conf;
-    if (!experimentalCodeSplitting) throw new Error('experimentalCodeSplitting required to be true');
+    const { input } = conf;
     const inputGlobed = Object
       .assign({}, ...fastGlob
         .sync([input]
