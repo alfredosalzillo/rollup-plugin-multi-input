@@ -43,9 +43,7 @@ var _default = function _default() {
   };
 
   var options = function options(conf) {
-    var input = conf.input,
-        experimentalCodeSplitting = conf.experimentalCodeSplitting;
-    if (!experimentalCodeSplitting) throw new Error('experimentalCodeSplitting required to be true');
+    var input = conf.input;
     var inputGlobed = Object.assign.apply(Object, [{}].concat(_toConsumableArray(_fastGlob["default"].sync([input].reduce(flatter(), []), glob).map(function (name) {
       return _defineProperty({}, formatName(name), name);
     }))));
