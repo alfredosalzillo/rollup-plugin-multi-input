@@ -1,6 +1,8 @@
 import fastGlob from 'fast-glob';
 import path from 'path';
 
+const flatter = () => (acc, a) => [...acc, ...(Array.isArray(a) ? a : [a])];
+
 /*
 * multiInput return a rollup plugin config for enable support of multi-entry glob inputs
 * */
@@ -8,20 +10,24 @@ export default ({
   glob,
   relative = 'src/',
 } = {}) => {
-  const flatter = () => (acc, a) => [...acc, ...(Array.isArray(a) ? a : [a])];
   const formatName = name => path
     .relative(relative, name)
     .replace(/\.[^/.]+$/, '');
   const options = (conf) => {
     const { input } = conf;
+    const reducedInput = [input]
+      .reduce(flatter(), []);
+    const stringInputs = reducedInput
+      .filter(name => typeof name === 'string');
+    const othersInputs = reducedInput
+      .filter(name => typeof name !== 'string');
     const inputGlobed = Object
       .assign({}, ...fastGlob
-        .sync([input]
-          .reduce(flatter(), []), glob)
+        .sync(stringInputs, glob)
         .map(name => ({ [formatName(name)]: name })));
     return {
       ...conf,
-      input: inputGlobed,
+      input: [inputGlobed, ...othersInputs],
     };
   };
   return {
