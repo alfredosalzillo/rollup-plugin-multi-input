@@ -1,13 +1,14 @@
 {
   "name": "rollup-plugin-multi-input",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "rollup plugin for multiple input using glob",
   "main": "dist/plugin.js",
   "esnext": "src/plugin.js",
   "scripts": {
     "lint": "eslint src/plugin.js",
     "build": "babel src/plugin.js --out-file dist/plugin.js",
-    "prepare": "npm run lint && npm run build"
+    "prepare": "npm run lint && npm run build",
+    "test": "jest"
   },
   "files": [
     "src",
@@ -33,10 +34,13 @@
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
+    "babel-jest": "^24.5.0",
     "babel-preset-airbnb": "^3.0.1",
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.4.1",
+    "jest": "^24.5.0"
   },
   "dependencies": {
     "fast-glob": "^2.2.4"

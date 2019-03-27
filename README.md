@@ -1,5 +1,7 @@
 # rollup-plugin-multi-input
 
+[![Build Status](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input.svg?branch=master)](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input)
+
 Use multiple entry points in your rollup bundle.
 Let you use glob in input.
 Preserve the dir structure in the output dir.
@@ -26,6 +28,9 @@ export default {
 ```
 If using a rollup lower version than __1.0.0__,
 `experimentalCodeSplitting` must be enabled.
+
+From version **0.2.0** it's possible to mix input types.
+But *glob in object input element is not supported* yet. 
 
 ## Options
 

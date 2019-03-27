@@ -3,11 +3,13 @@
 {
   "extends": "airbnb-base",
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "overrides": [
     {
       "files": ["*.js"]
     }
-  ]
+  ],
+  "plugins": ["jest"]
 }
