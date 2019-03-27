@@ -23,20 +23,21 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+var flatter = function flatter() {
+  return function (acc, a) {
+    return _toConsumableArray(acc).concat(_toConsumableArray(Array.isArray(a) ? a : [a]));
+  };
+};
 /*
 * multiInput return a rollup plugin config for enable support of multi-entry glob inputs
 * */
+
+
 var _default = function _default() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       glob = _ref.glob,
       _ref$relative = _ref.relative,
       relative = _ref$relative === void 0 ? 'src/' : _ref$relative;
-
-  var flatter = function flatter() {
-    return function (acc, a) {
-      return _toConsumableArray(acc).concat(_toConsumableArray(Array.isArray(a) ? a : [a]));
-    };
-  };
 
   var formatName = function formatName(name) {
     return _path["default"].relative(relative, name).replace(/\.[^/.]+$/, '');
@@ -44,11 +45,18 @@ var _default = function _default() {
 
   var options = function options(conf) {
     var input = conf.input;
-    var inputGlobed = Object.assign.apply(Object, [{}].concat(_toConsumableArray(_fastGlob["default"].sync([input].reduce(flatter(), []), glob).map(function (name) {
+    var reducedInput = [input].reduce(flatter(), []);
+    var stringInputs = reducedInput.filter(function (name) {
+      return typeof name === 'string';
+    });
+    var othersInputs = reducedInput.filter(function (name) {
+      return typeof name !== 'string';
+    });
+    var inputGlobed = Object.assign.apply(Object, [{}].concat(_toConsumableArray(_fastGlob["default"].sync(stringInputs, glob).map(function (name) {
       return _defineProperty({}, formatName(name), name);
     }))));
     return _objectSpread({}, conf, {
-      input: inputGlobed
+      input: Object.assign.apply(Object, [inputGlobed].concat(_toConsumableArray(othersInputs)))
     });
   };
 

@@ -1,9 +1,14 @@
+import os from 'os';
 import multiInput from './plugin';
 
-const testSrcInput = [{
+const testSrcInput = os.platform() === 'win32' ? {
   '..\\test-src\\input1': 'test-src/input1.js',
   '..\\test-src\\input2': 'test-src/input2.js',
-}];
+} : {
+  '../test-src/input1': 'test-src/input1.js',
+  '../test-src/input2': 'test-src/input2.js',
+};
+
 
 describe('rollup-plugin-multi-input', () => {
   it('should resolve glob', () => {
@@ -27,8 +32,9 @@ describe('rollup-plugin-multi-input', () => {
         test: 'path/to/test.js',
       }],
     });
-    expect(input).toEqual([...testSrcInput, {
+    expect(input).toEqual({
+      ...testSrcInput,
       test: 'path/to/test.js',
-    }]);
+    });
   });
 });

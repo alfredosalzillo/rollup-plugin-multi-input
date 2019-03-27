@@ -27,7 +27,7 @@ export default ({
         .map(name => ({ [formatName(name)]: name })));
     return {
       ...conf,
-      input: [inputGlobed, ...othersInputs],
+      input: Object.assign(inputGlobed, ...othersInputs),
     };
   };
   return {
