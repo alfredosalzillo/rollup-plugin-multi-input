@@ -3,4 +3,4 @@ node_js:
   - "node"
   - "lts/*"
 install:
-  - npm install -g codecov
+  - npm install
