@@ -1,6 +1,7 @@
 # rollup-plugin-multi-input
 
 [![Build Status](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input.svg?branch=master)](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input)
+[![codecov](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input/branch/master/graph/badge.svg)](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input)
 
 Use multiple entry points in your rollup bundle.
 Let you use glob in input.
