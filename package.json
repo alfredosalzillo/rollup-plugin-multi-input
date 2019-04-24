@@ -8,7 +8,8 @@
     "lint": "eslint src/plugin.js",
     "build": "babel src/plugin.js --out-dir dist",
     "generate-declaration": "jsdoc -t node_modules/tsd-jsdoc/dist -r ./dist/plugin.js -d ./dist/",
-    "prepare": "npm run lint && npm run build && npm run generate-declaration",
+    "prepare": "npm run lint && npm run build",
+    "prepublishOnly": "npm run generate-declaration",
     "test": "jest"
   },
   "files": [
