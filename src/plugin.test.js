@@ -37,4 +37,11 @@ describe('rollup-plugin-multi-input', () => {
       test: 'path/to/test.js',
     });
   });
+  it('should accept a simple string input', () => {
+    const plugin = multiInput();
+    const { input } = plugin.options({
+      input: 'test-src/**/*.js',
+    });
+    expect(input).toEqual(testSrcInput);
+  });
 });
