@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint src/plugin.js",
     "build": "babel src/plugin.js --out-file dist/plugin.js",
-    "prepare": "npm run lint && npm run build",
+    "generate-declaration": "jsdoc -t node_modules/tsd-jsdoc/dist -r ./dist/plugin.js -d ./dist/",
+    "prepare": "npm run lint && npm run build && npm run generate-declaration",
     "test": "jest"
   },
   "files": [
@@ -41,7 +42,9 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.4.1",
-    "jest": "^24.5.0"
+    "jest": "^24.5.0",
+    "jsdoc": "^3.5.5",
+    "tsd-jsdoc": "^2.1.3"
   },
   "dependencies": {
     "fast-glob": "^2.2.4"
