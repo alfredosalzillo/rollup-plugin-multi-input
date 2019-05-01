@@ -25,7 +25,7 @@ describe('rollup-plugin-multi-input', () => {
     });
     expect(input).toEqual(testSrcInput);
   });
-  it('should preserve no string element', () => {
+  it('should preserve no string entries', () => {
     const plugin = multiInput();
     const { input } = plugin.options({
       input: ['test-src/**/*.js', '/not-found/file.js', {

@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input.svg?branch=master)](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input)
 [![codecov](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input/branch/master/graph/badge.svg)](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input)
 ![](https://img.shields.io/badge/plugin-v0.2-blue.svg)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 Use multiple entry points in your rollup bundle.
 Let you use glob in input.
@@ -28,7 +29,7 @@ export default {
     plugins: [ multiInput() ],
 };
 ```
-If using a rollup lower version than __1.0.0__,
+If using a rollup lower version than **1.0.0**
 `experimentalCodeSplitting` must be enabled.
 
 From version **0.2.0** it's possible to mix input types.
