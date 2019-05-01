@@ -11,7 +11,8 @@
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run generate-declaration",
     "test": "jest --coverage",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "files": [
     "src",
