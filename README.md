@@ -2,12 +2,14 @@
 
 [![Build Status](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input.svg?branch=master)](https://travis-ci.org/alfredosalzillo/rollup-plugin-multi-input)
 [![codecov](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input/branch/master/graph/badge.svg)](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input)
-![](https://img.shields.io/badge/plugin-v0.2-blue.svg)
+[![rollup-plugin-multi-input](https://img.shields.io/badge/plugin-v0.2-blue.svg)](https://www.npmjs.com/package/rollup-plugin-multi-input)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-Use multiple entry points in your rollup bundle.
-Let you use glob in input.
-Preserve the dir structure in the output dir.
+A plugin to bundle libraries with multiple dist files.
+
+* Use multiple entry points in your rollup bundle.
+* Use glob in entries.
+* Preserve `src` three structure in the `dist` folder.
 
 ## Install
 Install via npm or yarn.
