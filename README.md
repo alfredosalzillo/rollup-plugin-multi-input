@@ -5,9 +5,9 @@
 [![rollup-plugin-multi-input](https://img.shields.io/badge/plugin-v0.2-blue.svg)](https://www.npmjs.com/package/rollup-plugin-multi-input)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-A plugin to bundle libraries with multiple dist files.
+A rollup plugin to bundle libraries with multiple dist files.
 
-* Use multiple entry points in your rollup bundle.
+* Use multiple entry points.
 * Use glob in entries.
 * Preserve `src` three structure in the `dist` folder.
 
@@ -18,11 +18,12 @@ npm i -D rollup-plugin-multi-input
 yarn add rollup-plugin-multi-input
 ```
 ## Setup
-In your rollup config
+In the rollup configuration
 ```js
 import multiInput from 'rollup-plugin-multi-input';
 
 export default {
+    // use glob in the input
     input: ['src/**/*.js'],
     output: {
       format: 'esm',
@@ -31,11 +32,31 @@ export default {
     plugins: [ multiInput() ],
 };
 ```
-If using a rollup lower version than **1.0.0**
-`experimentalCodeSplitting` must be enabled.
+If using a rollup version lower than **1.0.0**
+enable `experimentalCodeSplitting`.
 
-From version **0.2.0** it's possible to mix input types.
-But *glob in object input element is not supported* yet. 
+It's possible to mix `input` type.
+* use glob in array
+    ```js
+    input: ['src/**/*.js']
+    ```
+* use object input configuration
+    ```js
+    // DO 👍
+    input: [{
+      output1: 'src/output1.js'
+    }]
+    // DON'T ❌ (glob not supported yet)
+    input: [{
+      output1: 'src/**/*.js'
+    }]
+    ```
+* use glob string and object configuration
+    ```js
+    input: ['src/more/**/*.js', 'src/more2/**/*.js', {
+      output1: 'src/output1.js'
+    }]
+   ```
 
 ## Options
 
