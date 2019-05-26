@@ -56,10 +56,12 @@ describe('rollup-plugin-multi-input', () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput()],
+      external: ['fast-glob', 'path'],
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput({})],
+      external: ['fast-glob', 'path'],
     });
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
     expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
