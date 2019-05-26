@@ -6,15 +6,14 @@ stages:
   - test
   - test-release
   - release
+install: npm install
+test: npm run test
+script:
+  - npm run build
+  - npx semantic-release --dry-run
+after_success: codecov
 jobs:
   include:
-    - stage: test
-      install: npm install
-      script:
-        - npm run test
-        - npm run build
-        - npx semantic-release --dry-run
-      after_success: codecov
     # Define the release stage that runs semantic-release on master
     - stage: release
       node_js: lts/*
@@ -28,7 +27,7 @@ jobs:
     # Define the test release stage that runs semantic-release on others branch
     - stage: test-release
       node_js: lts/*
-      if: branch != master AND env(TRAVIS_PULL_REQUEST) = false
+      if: branch != master
       # Advanced: optionally overwrite your default `script` step to skip the tests
       # script: skip
       deploy:
