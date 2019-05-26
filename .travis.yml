@@ -6,6 +6,27 @@ install:
   - npm install
 script:
   - npm run test && npm run build
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
 after_success:
   - codecov
+jobs:
+  include:
+    # Define the release stage that runs semantic-release on master
+    - stage: release
+      node_js: lts/*
+      if: branch = master AND env(TRAVIS_PULL_REQUEST) = false
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npx semantic-release
+    # Define the release stage that runs semantic-release on others branch
+    - stage: release
+      node_js: lts/*
+      if: branch != master AND env(TRAVIS_PULL_REQUEST) = false
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npx semantic-release --dry-run
