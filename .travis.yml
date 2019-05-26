@@ -2,10 +2,27 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
-install:
-  - npm install
+stages:
+  - test
+  - coverage
+  - release
+install: npm install
 script:
-  - npm run test && npm run build
-  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
-after_success:
-  - codecov
+  - npm run test
+  - npm run build
+jobs:
+  include:
+    # Define the coverage stage that runs codecov only once
+    - stage: coverage
+      node_js: lts/*
+      after_script: npx codecov
+    # Define the release stage that runs semantic-release on master
+    - stage: release
+      node_js: lts/*
+      if: branch = master
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npx semantic-release
