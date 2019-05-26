@@ -10,7 +10,10 @@ jobs:
   include:
     - stage: test
       install: npm install
-      script: npm run test && npm run build
+      script:
+        - npm run test
+        - npm run build
+        - npx semantic-release --dry-run
       after_success: codecov
     # Define the release stage that runs semantic-release on master
     - stage: release
