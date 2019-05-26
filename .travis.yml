@@ -2,14 +2,12 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
-install:
-  - npm install
-script:
-  - npm run test && npm run build
-after_success:
-  - codecov
 jobs:
   include:
+    - stage: test
+      install: npm install
+      script: npm run test && npm run build
+      after_success: codecov
     # Define the release stage that runs semantic-release on master
     - stage: release
       node_js: lts/*
