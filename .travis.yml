@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
+stages:
+  - test
+  - test-release
+  - release
 jobs:
   include:
     - stage: test
@@ -18,8 +22,8 @@ jobs:
         provider: script
         skip_cleanup: true
         script: npx semantic-release
-    # Define the release stage that runs semantic-release on others branch
-    - stage: release
+    # Define the test release stage that runs semantic-release on others branch
+    - stage: test-release
       node_js: lts/*
       if: branch != master AND env(TRAVIS_PULL_REQUEST) = false
       # Advanced: optionally overwrite your default `script` step to skip the tests
