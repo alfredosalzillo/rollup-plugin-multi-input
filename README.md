@@ -13,7 +13,7 @@ A rollup plugin to bundle libraries with multiple dist files.
 
 ## Install
 Install via npm or yarn.
-```
+```bash
 npm i -D rollup-plugin-multi-input
 yarn add rollup-plugin-multi-input
 ```
