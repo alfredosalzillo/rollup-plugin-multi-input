@@ -8,7 +8,7 @@ const expectedOutput = [
 
 const generateBundle = options => rollup(options)
   .then(bundle => bundle.generate({
-    format: "cjs",
+    format: 'cjs',
   }));
 
 const generateOutputFileNames = options => generateBundle(options)
@@ -63,7 +63,7 @@ describe('rollup-plugin-multi-input', () => {
       plugins: [multiInput({})],
       external: ['fast-glob', 'path'],
     });
-    expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
-    expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
+    expect(outputFilesWithNoOptions).toEqual(['plugin.js', 'utilities.js']);
+    expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js', 'utilities.js']);
   });
 });
