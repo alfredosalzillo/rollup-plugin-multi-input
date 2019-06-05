@@ -29,6 +29,7 @@ export default ({
     .relative(relative, name)
     .replace(/\.[^/.]+$/, '');
   return {
+    name: pluginName,
     options(conf) {
       const [globs, others] = [conf.input]
         // flat to enable input to be a string or an array
