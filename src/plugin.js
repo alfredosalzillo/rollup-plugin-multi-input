@@ -18,7 +18,7 @@ const defaultOptions = {
  *  @param {?Object} options
  *  @param {?FastGlob.Options} options.glob the fast-glob configuration object
  *  @param {?string} options.relative the base path to remove in the dist folder
- *  @return {PluginHooks} the rollup plugin config for enable support of multi-entry glob inputs
+ *  @return {Plugin} the rollup plugin config for enable support of multi-entry glob inputs
  *
  * */
 export default ({
