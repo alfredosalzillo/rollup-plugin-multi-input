@@ -1,6 +1,6 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
-import { flat, partition } from './utilities';
+import { partition } from './utilities';
 
 const pluginName = 'rollup-plugin-multi-input';
 
