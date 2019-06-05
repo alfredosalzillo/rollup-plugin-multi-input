@@ -1,13 +1,8 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
+import { flat, partition } from './utilities';
 
-// utilities function
-// flat reducers
-const flat = () => (acc, a) => [...acc, ...(Array.isArray(a) ? a : [a])];
-// partition reducers
-const partition = condition => ([truly = [], falsy = []], e) => (condition(e)
-  ? [[...truly, e], falsy]
-  : [truly, [...falsy, e]]);
+const pluginName = 'rollup-plugin-multi-input';
 
 /**
  * default multi-input Options
@@ -37,7 +32,7 @@ export default ({
     options(conf) {
       const [globs, others] = [conf.input]
         // flat to enable input to be a string or an array
-        .reduce(flat(), [])
+        .flat()
         // separate globs inputs string from others to enable input to be a mixed array too
         .reduce(partition(e => typeof e === 'string'), []);
       // get files from the globs strings and return as a Rollup entries Object
