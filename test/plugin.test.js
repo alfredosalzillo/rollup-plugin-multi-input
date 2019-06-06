@@ -1,4 +1,4 @@
-import { rollup } from 'rollup/dist/rollup';
+import { rollup } from 'rollup';
 import multiInput from '../src/plugin';
 
 const expectedOutput = [
