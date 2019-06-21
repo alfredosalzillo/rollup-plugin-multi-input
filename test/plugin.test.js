@@ -1,4 +1,4 @@
-import { rollup } from 'rollup/dist/rollup';
+import { rollup } from 'rollup';
 import multiInput from '../src/plugin';
 
 const expectedOutput = [
@@ -8,7 +8,7 @@ const expectedOutput = [
 
 const generateBundle = options => rollup(options)
   .then(bundle => bundle.generate({
-    format: "cjs",
+    format: 'cjs',
   }));
 
 const generateOutputFileNames = options => generateBundle(options)

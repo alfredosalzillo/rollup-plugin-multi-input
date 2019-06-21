@@ -1,13 +1,10 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
+import fromPairs from 'lodash-es/fromPairs';
+import isString from 'lodash-es/isString';
+import partition from 'lodash-es/partition';
 
-// utilities function
-// flat reducers
-const flat = () => (acc, a) => [...acc, ...(Array.isArray(a) ? a : [a])];
-// partition reducers
-const partition = condition => ([truly = [], falsy = []], e) => (condition(e)
-  ? [[...truly, e], falsy]
-  : [truly, [...falsy, e]]);
+const pluginName = 'rollup-plugin-multi-input';
 
 /**
  * default multi-input Options
@@ -16,6 +13,10 @@ const defaultOptions = {
   relative: 'src/',
 };
 
+// extract the output file name from a file name
+const outputFileName = filePath => filePath
+  .replace(/\.[^/.]+$/, '');
+
 /**
  *  multiInput is a rollup plugin to use multiple entry point and preserve the directory
  *  structure in the dist folder
@@ -23,38 +24,31 @@ const defaultOptions = {
  *  @param {?Object} options
  *  @param {?FastGlob.Options} options.glob the fast-glob configuration object
  *  @param {?string} options.relative the base path to remove in the dist folder
- *  @return {PluginHooks} the rollup plugin config for enable support of multi-entry glob inputs
- *
+ *  @return {Plugin} the rollup plugin config for enable support of multi-entry glob inputs
  * */
 export default ({
   glob: globOptions,
   relative = defaultOptions.relative,
-} = defaultOptions) => {
-  const formatName = name => path
-    .relative(relative, name)
-    .replace(/\.[^/.]+$/, '');
-  return {
-    options(conf) {
-      const [globs, others] = [conf.input]
-        // flat to enable input to be a string or an array
-        .reduce(flat(), [])
-        // separate globs inputs string from others to enable input to be a mixed array too
-        .reduce(partition(e => typeof e === 'string'), []);
-      // get files from the globs strings and return as a Rollup entries Object
-      const input = Object
-        .assign(
-          {},
-          ...fastGlob
-            .sync(globs, globOptions)
-            .map(name => ({ [formatName(name)]: name })),
-          // add no globs input to the result
-          ...others,
-        );
+} = defaultOptions) => ({
+  name: pluginName,
+  options(conf) {
+    // flat to enable input to be a string or an array
+    // separate globs inputs string from others to enable input to be a mixed array too
+    const [globs, others] = partition([conf.input].flat(), isString);
+    // get files from the globs strings and return as a Rollup entries Object
+    const input = Object
+      .assign(
+        {},
+        fromPairs(fastGlob
+          .sync(globs, globOptions)
+          .map(name => [outputFileName(path.relative(relative, name)), name])),
+        // add no globs input to the result
+        ...others,
+      );
       // return the new configuration with the glob input and the non string inputs
-      return {
-        ...conf,
-        input,
-      };
-    },
-  };
-};
+    return {
+      ...conf,
+      input,
+    };
+  },
+});
