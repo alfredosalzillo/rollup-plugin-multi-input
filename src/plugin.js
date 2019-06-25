@@ -1,8 +1,8 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
-import fromPairs from 'lodash-es/fromPairs';
-import isString from 'lodash-es/isString';
-import partition from 'lodash-es/partition';
+import fromPairs from 'lodash/fromPairs';
+import isString from 'lodash/isString';
+import partition from 'lodash/partition';
 
 const pluginName = 'rollup-plugin-multi-input';
 
