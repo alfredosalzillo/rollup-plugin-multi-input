@@ -3,8 +3,7 @@ import path from 'path';
 import fromPairs from 'lodash/fromPairs';
 import isString from 'lodash/isString';
 import partition from 'lodash/partition';
-
-const pluginName = 'rollup-plugin-multi-input';
+import { name } from '../package.json';
 
 /**
  * default multi-input Options
@@ -30,7 +29,7 @@ export default ({
   glob: globOptions,
   relative = defaultOptions.relative,
 } = defaultOptions) => ({
-  name: pluginName,
+  name,
   options(conf) {
     // flat to enable input to be a string or an array
     // separate globs inputs string from others to enable input to be a mixed array too
