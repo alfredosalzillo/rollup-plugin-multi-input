@@ -40,7 +40,7 @@
     "babel-jest": "^24.5.0",
     "babel-preset-airbnb": "^3.0.1",
     "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.4.1",
     "jest": "^24.5.0",
