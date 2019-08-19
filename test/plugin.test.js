@@ -1,4 +1,5 @@
 import { rollup } from 'rollup';
+import importJson from 'rollup-plugin-json';
 import multiInput from '../src/plugin';
 
 const expectedOutput = [
@@ -6,13 +7,13 @@ const expectedOutput = [
   'fixtures/input2.js',
 ].sort();
 
-const generateBundle = options => rollup(options)
-  .then(bundle => bundle.generate({
+const generateBundle = (options) => rollup(options)
+  .then((bundle) => bundle.generate({
     format: 'cjs',
   }));
 
-const generateOutputFileNames = options => generateBundle(options)
-  .then(({ output }) => output.map(module => module.fileName).sort());
+const generateOutputFileNames = (options) => generateBundle(options)
+  .then(({ output }) => output.map((module) => module.fileName).sort());
 
 describe('rollup-plugin-multi-input', () => {
   it('should resolve glob', async () => {
@@ -55,12 +56,12 @@ describe('rollup-plugin-multi-input', () => {
   it('should resolve relative to "src" as default', async () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
       input: ['src/**/*.js'],
-      plugins: [multiInput()],
+      plugins: [multiInput(), importJson()],
       external: ['fast-glob', 'path'],
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
       input: ['src/**/*.js'],
-      plugins: [multiInput({})],
+      plugins: [multiInput({}), importJson()],
       external: ['fast-glob', 'path'],
     });
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
