@@ -42,7 +42,7 @@
     "eslint": "^6.2.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jest": "^23.0.3",
     "jest": "^24.5.0",
     "jsdoc": "^3.6.2",
     "regenerator-runtime": "^0.13.2",
