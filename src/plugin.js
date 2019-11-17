@@ -3,8 +3,7 @@ import path from 'path';
 import fromPairs from 'lodash/fromPairs';
 import isString from 'lodash/isString';
 import partition from 'lodash/partition';
-
-const pluginName = 'rollup-plugin-multi-input';
+import { name as pluginName } from '../package.json';
 
 /**
  * default multi-input Options
@@ -14,7 +13,7 @@ const defaultOptions = {
 };
 
 // extract the output file name from a file name
-const outputFileName = filePath => filePath
+const outputFileName = (filePath) => filePath
   .replace(/\.[^/.]+$/, '');
 
 /**
@@ -30,7 +29,7 @@ export default ({
   glob: globOptions,
   relative = defaultOptions.relative,
 } = defaultOptions) => ({
-  name: pluginName,
+  pluginName,
   options(conf) {
     // flat to enable input to be a string or an array
     // separate globs inputs string from others to enable input to be a mixed array too
@@ -41,7 +40,14 @@ export default ({
         {},
         fromPairs(fastGlob
           .sync(globs, globOptions)
-          .map(name => [outputFileName(path.relative(relative, name)), name])),
+          .map((name) => {
+            const filePath = path.relative(relative, name);
+            const isRelative = !filePath.startsWith('../');
+            const relativeToRoot = () => path.relative('./', name);
+            return [outputFileName(isRelative
+              ? filePath
+              : relativeToRoot()), name];
+          })),
         // add no globs input to the result
         ...others,
       );
