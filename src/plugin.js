@@ -40,7 +40,14 @@ export default ({
         {},
         fromPairs(fastGlob
           .sync(globs, globOptions)
-          .map((name) => [outputFileName(path.relative(relative, name)), name])),
+          .map((name) => {
+            const filePath = path.relative(relative, name);
+            const isRelative = !filePath.startsWith('../');
+            const relativeToRoot = () => path.relative('./', name);
+            return [outputFileName(isRelative
+              ? filePath
+              : relativeToRoot()), name];
+          })),
         // add no globs input to the result
         ...others,
       );

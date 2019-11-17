@@ -67,4 +67,15 @@ describe('rollup-plugin-multi-input', () => {
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
     expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
   });
+  it('should resolve non relative to "relative" options path to root', async () => {
+    const outputFiles = await generateOutputFileNames({
+      input: ['test/fixtures/**/*.js'],
+      plugins: [multiInput(), importJson()],
+      external: ['fast-glob', 'path'],
+    });
+    expect(outputFiles).toEqual([
+      'test/fixtures/input1.js',
+      'test/fixtures/input2.js',
+    ]);
+  });
 });
