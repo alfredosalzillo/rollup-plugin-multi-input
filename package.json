@@ -37,7 +37,7 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@types/jest": "^24.0.12",
-    "babel-jest": "^24.5.0",
+    "babel-jest": "^25.1.0",
     "babel-preset-airbnb": "^3.0.1",
     "eslint": "^6.2.0",
     "eslint-config-airbnb-base": "^14.0.0",
