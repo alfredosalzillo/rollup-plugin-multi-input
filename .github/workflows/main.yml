@@ -17,9 +17,6 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
     - name: deploy
-      if: github.ref == 'refs/heads/master'
-      run: npx semantic-release
-    - name: deploy
       uses: codfish/semantic-release-action@master
       with:
         branch: master
