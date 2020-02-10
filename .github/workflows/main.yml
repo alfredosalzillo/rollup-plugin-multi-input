@@ -1,0 +1,25 @@
+name: CI/CD
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-node@v1.1.0
+    - uses: actions/checkout@v2
+    - name: build
+      run: |
+        npm install
+        npm run build
+    - name: test
+      run: npm run test
+    - name: coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+    - name: deploy
+      uses: codfish/semantic-release-action@master
+      with:
+        branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
