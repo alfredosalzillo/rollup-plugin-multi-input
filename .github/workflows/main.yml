@@ -13,7 +13,9 @@ jobs:
     - name: test
       run: npm run test
     - name: coverage
-      run: npx codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
     - name: deploy
       if: github.ref == 'refs/heads/master'
       run: npx semantic-release
