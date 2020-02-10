@@ -1,0 +1,23 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/setup-node@v1.1.0
+    - uses: actions/checkout@v2
+    - name: build
+      run: |
+        npm install
+        npm run build
+    - name: test
+      run: npm run test
+    - name: coverage
+      run: npx codecov
+    - name: deploy
+      if: github.ref == 'refs/heads/master'
+      run: npx semantic-release
