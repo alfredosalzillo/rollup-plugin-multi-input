@@ -1,5 +1,5 @@
 import { rollup } from 'rollup';
-import importJson from 'rollup-plugin-json';
+import importJson from '@rollup/plugin-json';
 import multiInput from '../src/plugin';
 
 const expectedOutput = [
