@@ -1,6 +1,7 @@
 import { rollup } from 'rollup';
 import importJson from '@rollup/plugin-json';
 import multiInput from '../src/plugin';
+import path from 'path';
 
 const expectedOutput = [
   'fixtures/input1.js',
@@ -76,6 +77,19 @@ describe('rollup-plugin-multi-input', () => {
     expect(outputFiles).toEqual([
       'test/fixtures/input1.js',
       'test/fixtures/input2.js',
+    ]);
+  });
+  it('should resolve output to "dist" directory', async () => {
+    const outputFiles = await generateOutputFileNames({
+      input: ['test/fixtures/**/*.js'],
+      plugins: [multiInput({
+        transformOutputPath: (output, input) => `dest/${path.basename(output)}`
+      })],
+      external: ['fast-glob', 'path'],
+    });
+    expect(outputFiles).toEqual([
+      'dest/input1.js',
+      'dest/input2.js',
     ]);
   });
 });
