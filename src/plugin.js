@@ -29,10 +29,11 @@ const outputFileName = (filePath) => filePath
  *  structure in the dist folder
  *
  *  @param {?Object} options
- *  @param {?FastGlob.Options} options.glob the fast-glob configuration object
- *  @param {?string} options.relative the base path to remove in the dist folder
- *  @param {?TransformOutputPathFn} options.transformOutputPath callback function to transform the destination file name before generation
- *  @return {Plugin} the rollup plugin config for enable support of multi-entry glob inputs
+ *  @param {?FastGlob.Options} options.glob - the fast-glob configuration object
+ *  @param {?string} options.relative - the base path to remove in the dist folder
+ *  @param {?TransformOutputPathFn} options.transformOutputPath - callback function to
+ *      transform the destination file name before generation
+ *  @return {Plugin} - the rollup plugin config for enable support of multi-entry glob inputs
  * */
 export default ({
   glob: globOptions,
