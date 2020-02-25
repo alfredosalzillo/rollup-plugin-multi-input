@@ -1,11 +1,20 @@
 import { rollup } from 'rollup';
 import importJson from '@rollup/plugin-json';
 import multiInput from '../src/plugin';
+import path from 'path';
 
 const expectedOutput = [
   'fixtures/input1.js',
   'fixtures/input2.js',
 ].sort();
+
+const externalDependencies = [
+    'fast-glob',
+    'path',
+    'lodash/isString',
+    'lodash/partition',
+    'lodash/fromPairs',
+];
 
 const generateBundle = (options) => rollup(options)
   .then((bundle) => bundle.generate({
@@ -57,12 +66,12 @@ describe('rollup-plugin-multi-input', () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput(), importJson()],
-      external: ['fast-glob', 'path'],
+      external: externalDependencies,
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput({}), importJson()],
-      external: ['fast-glob', 'path'],
+      external: externalDependencies,
     });
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
     expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
@@ -76,6 +85,19 @@ describe('rollup-plugin-multi-input', () => {
     expect(outputFiles).toEqual([
       'test/fixtures/input1.js',
       'test/fixtures/input2.js',
+    ]);
+  });
+  it('should resolve output to "dist" directory', async () => {
+    const outputFiles = await generateOutputFileNames({
+      input: ['test/fixtures/**/*.js'],
+      plugins: [multiInput({
+        transformOutputPath: (output, input) => `dest/${path.basename(output)}`
+      })],
+      external: ['fast-glob', 'path'],
+    });
+    expect(outputFiles).toEqual([
+      'dest/input1.js',
+      'dest/input2.js',
     ]);
   });
 });
