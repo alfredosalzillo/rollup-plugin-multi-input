@@ -8,6 +8,14 @@ const expectedOutput = [
   'fixtures/input2.js',
 ].sort();
 
+const externalDependencies = [
+    'fast-glob',
+    'path',
+    'lodash/isString',
+    'lodash/partition',
+    'lodash/fromPairs',
+];
+
 const generateBundle = (options) => rollup(options)
   .then((bundle) => bundle.generate({
     format: 'cjs',
@@ -58,12 +66,12 @@ describe('rollup-plugin-multi-input', () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput(), importJson()],
-      external: ['fast-glob', 'path'],
+      external: externalDependencies,
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
       input: ['src/**/*.js'],
       plugins: [multiInput({}), importJson()],
-      external: ['fast-glob', 'path'],
+      external: externalDependencies,
     });
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
     expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
