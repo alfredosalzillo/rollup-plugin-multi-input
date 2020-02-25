@@ -80,6 +80,28 @@ export default {
 };
 // create the files dist/bar.js and dist/foo/bar.js
 ```
- 
+
+### transformOutputPath
+A callback for transforming output file path.
+
+Example:
+```js
+import multiInput from 'rollup-plugin-multi-input';
+import path from 'path';
+
+export default {
+    input: ['src/bar.js', 'src/foo/bar.js'],
+    output: {
+      format: 'esm',
+      dir: 'dist'
+    },
+    plugins: [ multiInput({ 
+        relative: 'src/', 
+        transformOutputPath: (output, input) => `awesome/path/${path.basename(output)}`, 
+    }) ],
+};
+// create the files dist/bar.js and dist/foo/bar.js
+```
+
 ### glob `{}`
 [fast-glob](https://github.com/mrmlnc/fast-glob) object configuration.
