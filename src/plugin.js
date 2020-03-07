@@ -46,26 +46,21 @@ export default ({
     // separate globs inputs string from others to enable input to be a mixed array too
     const [globs, others] = partition([conf.input].flat(), isString);
     // get files from the globs strings and return as a Rollup entries Object
-
     const input = Object
       .assign(
         {},
         fromPairs(fastGlob
           .sync(globs, globOptions)
           .map((name) => {
-            let filePath = path.relative(relative, name);
+            const filePath = path.relative(relative, name);
             const isRelative = !filePath.startsWith('../');
-            const relativeToRoot = () => path.relative('./', name);
-
-            filePath = isRelative
+            const relativeFilePath = (isRelative
               ? filePath
-              : relativeToRoot();
-
+              : path.relative('./', name));
             if (transformOutputPath) {
-              filePath = transformOutputPath(filePath, name);
+              return [outputFileName(transformOutputPath(relativeFilePath, name)), name];
             }
-
-            return [outputFileName(filePath), name];
+            return [outputFileName(relativeFilePath), name];
           })),
         // add no globs input to the result
         ...others,
