@@ -12,7 +12,7 @@ A rollup plugin to bundle libraries with multiple dist files.
 
 * Use multiple entry points.
 * Use glob in entries.
-* Preserve `src` three structure in the `dist` folder.
+* Preserve `src` tree structure in the `dist` folder.
 
 ## Install
 Install via npm or yarn.
