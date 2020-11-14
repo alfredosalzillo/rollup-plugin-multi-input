@@ -5,8 +5,6 @@
 [![npm version](https://badge.fury.io/js/rollup-plugin-multi-input.svg)](https://badge.fury.io/js/rollup-plugin-multi-input)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![](https://data.jsdelivr.com/v1/package/npm/rollup-plugin-multi-input/badge?style=rounded)](https://www.jsdelivr.com/package/npm/rollup-plugin-multi-input)
-[![dependencies Status](https://david-dm.org/alfredosalzillo/rollup-plugin-multi-input/status.svg)](https://david-dm.org/alfredosalzillo/rollup-plugin-multi-input)
-[![devDependencies Status](https://david-dm.org/alfredosalzillo/rollup-plugin-multi-input/dev-status.svg)](https://david-dm.org/alfredosalzillo/rollup-plugin-multi-input?type=dev)
 
 A rollup plugin to bundle libraries with multiple dist files.
 
