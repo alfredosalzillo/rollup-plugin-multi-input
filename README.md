@@ -6,7 +6,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![](https://data.jsdelivr.com/v1/package/npm/rollup-plugin-multi-input/badge?style=rounded)](https://www.jsdelivr.com/package/npm/rollup-plugin-multi-input)
 
-A rollup plugin to bundle libraries with multiple dist files.
+A rollup plugin to bundle modular libraries with sub directories.
 
 * Use multiple entry points.
 * Use glob in entries.
