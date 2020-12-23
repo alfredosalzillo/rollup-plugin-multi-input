@@ -6,7 +6,7 @@
   "esnext": "src/plugin.js",
   "scripts": {
     "lint": "eslint src/plugin.js",
-    "build": "babel src/plugin.js --out-dir dist",
+    "build": "swc src/plugin.js --out-dir dist",
     "generate-declaration": "jsdoc -t node_modules/tsd-jsdoc/dist -r ./dist/plugin.js -d ./dist/",
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run generate-declaration",
@@ -34,19 +34,17 @@
   },
   "homepage": "https://github.com/alfredosalzillo/rollup-plugin-multi-input#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
     "@rollup/plugin-json": "^4.0.2",
+    "@swc/cli": "^0.1.27",
+    "@swc/core": "^1.2.40",
+    "@swc/jest": "^0.1.2",
     "@types/jest": "^26.0.0",
-    "babel-jest": "^26.0.1",
-    "babel-preset-airbnb": "^5.0.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^24.0.0",
     "jest": "^26.0.1",
     "jsdoc": "^3.6.2",
-    "regenerator-runtime": "^0.13.2",
     "rollup": "^2.0.2",
     "tsd-jsdoc": "^2.1.3"
   },
@@ -58,6 +56,11 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest"
+      ]
+    }
   }
 }
