@@ -1,6 +1,5 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
-import fromPairs from 'lodash/fromPairs';
 import isString from 'lodash/isString';
 import partition from 'lodash/partition';
 import { name as pluginName } from '../package.json';
@@ -49,7 +48,7 @@ export default ({
     const input = Object
       .assign(
         {},
-        fromPairs(fastGlob
+        Object.fromEntries(fastGlob
           .sync(globs, globOptions)
           .map((name) => {
             const filePath = path.relative(relative, name);
