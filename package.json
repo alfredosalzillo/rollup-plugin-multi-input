@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-multi-input",
   "version": "0.2.2",
-  "description": "rollup plugin for multiple input using glob, ideal for build libraries with multiple dist files",
+  "description": "rollup plugin for bundling modular libraries",
   "main": "dist/plugin.js",
   "esnext": "src/plugin.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "rollup",
     "es6",
     "glob",
-    "multi-entry"
+    "multi-entry",
+    "modular",
+    "libraries"
   ],
   "repository": {
     "type": "git",
