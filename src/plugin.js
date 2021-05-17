@@ -39,7 +39,7 @@ export default ({
   relative = defaultOptions.relative,
   transformOutputPath,
 } = defaultOptions) => ({
-  pluginName,
+  name: pluginName,
   options(conf) {
     // flat to enable input to be a string or an array
     // separate globs inputs string from others to enable input to be a mixed array too
