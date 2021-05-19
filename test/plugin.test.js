@@ -1,7 +1,7 @@
 import { rollup } from 'rollup';
 import importJson from '@rollup/plugin-json';
-import multiInput from '../src/plugin';
 import path from 'path';
+import multiInput from '../src/plugin';
 
 const expectedOutput = [
   'fixtures/input1.js',
@@ -9,11 +9,11 @@ const expectedOutput = [
 ].sort();
 
 const externalDependencies = [
-    'fast-glob',
-    'path',
-    'lodash/isString',
-    'lodash/partition',
-    'lodash/fromPairs',
+  'fast-glob',
+  'path',
+  'lodash/isString',
+  'lodash/partition',
+  'lodash/fromPairs',
 ];
 
 const generateBundle = (options) => rollup(options)
@@ -91,7 +91,7 @@ describe('rollup-plugin-multi-input', () => {
     const outputFiles = await generateOutputFileNames({
       input: ['test/fixtures/**/*.js'],
       plugins: [multiInput({
-        transformOutputPath: (output, input) => `dest/${path.basename(output)}`
+        transformOutputPath: (output, input) => `dest/${path.basename(output)}`,
       })],
       external: ['fast-glob', 'path'],
     });
