@@ -25,6 +25,11 @@ const generateOutputFileNames = (options) => generateBundle(options)
   .then(({ output }) => output.map((module) => module.fileName).sort());
 
 describe('rollup-plugin-multi-input', () => {
+  it('should have name rollup-plugin-multi-input', async () => {
+    const plugin = multiInput({ relative: './test' });
+    expect('name' in plugin).toBeTruthy();
+    expect(plugin.name).toBe('rollup-plugin-multi-input');
+  });
   it('should resolve glob', async () => {
     const outputFiles = await generateOutputFileNames({
       input: ['test/fixtures/**/*.js'],
