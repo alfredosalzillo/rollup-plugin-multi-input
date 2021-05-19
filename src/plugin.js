@@ -8,12 +8,13 @@ import { name as pluginName } from '../package.json';
  * default multi-input Options
  * */
 const defaultOptions = {
-  relative: 'src/',
+  relative: `src${path.sep}`,
 };
 
 // extract the output file name from a file name
 const outputFileName = (filePath) => filePath
-  .replace(/\.[^/.]+$/, '');
+  .replace(/\.[^/.]+$/, '')
+  .replace(/\\/g, '/');
 
 /**
  * Callback for transforming output file path
@@ -46,18 +47,19 @@ export default (options = defaultOptions) => {
       // flat to enable input to be a string or an array
       // separate globs inputs string from others to enable input to be a mixed array too
       const [globs, others] = partition([conf.input].flat(), isString);
+      const normalizedGlobs = globs.map((glob) => glob.replace(/\\/g, '/'));
       // get files from the globs strings and return as a Rollup entries Object
       const input = Object
         .assign(
           {},
           Object.fromEntries(fastGlob
-            .sync(globs, globOptions)
+            .sync(normalizedGlobs, globOptions)
             .map((name) => {
               const filePath = path.relative(relative, name);
-              const isRelative = !filePath.startsWith('../');
+              const isRelative = !filePath.startsWith(`..${path.sep}`);
               const relativeFilePath = (isRelative
                 ? filePath
-                : path.relative('./', name));
+                : path.relative(`.${path.sep}`, name));
               if (transformOutputPath) {
                 return [outputFileName(transformOutputPath(relativeFilePath, name)), name];
               }
