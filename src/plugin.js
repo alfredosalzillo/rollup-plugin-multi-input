@@ -8,6 +8,7 @@ import { name as pluginName } from '../package.json';
  * default multi-input Options
  * */
 const defaultOptions = {
+  // `path.sep` is used for windows support 
   relative: `src${path.sep}`,
 };
 
