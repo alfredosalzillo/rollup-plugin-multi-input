@@ -45,7 +45,7 @@ jobs:
       - name: deploy
         uses: codfish/semantic-release-action@master
         with:
-          branch: master
+          branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
