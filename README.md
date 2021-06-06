@@ -62,7 +62,7 @@ It's possible to mix `input` type.
 ## Options
 
 ### relative `'src/'`
-Specific the relative path to use in the dist folder.
+Specify the relative path to use in the dist folder.
 
 Example:
 ```js
@@ -98,7 +98,7 @@ export default {
         transformOutputPath: (output, input) => `awesome/path/${path.basename(output)}`, 
     }) ],
 };
-// create the files dist/bar.js and dist/foo/bar.js
+// create the files awesome/path/bar.js and awesome/path/foo/bar.js
 ```
 
 ### glob `{}`
