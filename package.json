@@ -3,6 +3,7 @@
   "version": "0.2.2",
   "description": "rollup plugin for bundling modular libraries",
   "main": "dist/plugin.js",
+  "module": "src/plugin.js",
   "esnext": "src/plugin.js",
   "scripts": {
     "lint": "eslint src/plugin.js",
