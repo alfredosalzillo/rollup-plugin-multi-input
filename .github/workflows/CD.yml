@@ -52,7 +52,7 @@ jobs:
           npm install
           npm run build
       - name: deploy
-        uses: codfish/semantic-release-action@master
+        uses: codfish/semantic-release-action@v2
         with:
           branch: main
         env:
