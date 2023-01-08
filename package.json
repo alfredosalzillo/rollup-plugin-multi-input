@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-multi-input",
-  "version": "0.2.2",
+  "version": "1.4.0",
   "description": "rollup plugin for bundling modular libraries",
   "main": "dist/plugin.js",
   "module": "src/plugin.js",
