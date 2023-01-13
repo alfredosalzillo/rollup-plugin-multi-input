@@ -2,6 +2,7 @@
   "name": "rollup-plugin-multi-input",
   "version": "1.4.0",
   "description": "rollup plugin for bundling modular libraries",
+  "type": "module",
   "main": "dist/plugin.js",
   "module": "src/plugin.js",
   "esnext": "src/plugin.js",
