@@ -103,3 +103,4 @@ export default {
 
 ### glob `{}`
 [fast-glob](https://github.com/mrmlnc/fast-glob) object configuration.
+
