@@ -1,6 +1,8 @@
+import path from 'path';
 import { rollup } from 'rollup';
 import importJson from '@rollup/plugin-json';
-import path from 'path';
+import tsPlugin from 'rollup-plugin-typescript2';
+
 import multiInput from '../src/plugin';
 
 const expectedOutput = [
@@ -19,6 +21,7 @@ const externalDependencies = [
 const generateBundle = (options) => rollup(options)
   .then((bundle) => bundle.generate({
     format: 'cjs',
+    exports: 'auto',
   }));
 
 const generateOutputFileNames = (options) => generateBundle(options)
@@ -69,13 +72,13 @@ describe('rollup-plugin-multi-input', () => {
   });
   it('should resolve relative to "src" as default', async () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
-      input: ['src/**/*.js'],
-      plugins: [multiInput(), importJson()],
+      input: ['src/**/*.ts'],
+      plugins: [multiInput(), importJson(), tsPlugin()],
       external: externalDependencies,
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
-      input: ['src/**/*.js'],
-      plugins: [multiInput({}), importJson()],
+      input: ['src/**/*.ts'],
+      plugins: [multiInput({}), importJson(), tsPlugin()],
       external: externalDependencies,
     });
     expect(outputFilesWithNoOptions).toEqual(['plugin.js']);

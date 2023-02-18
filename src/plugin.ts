@@ -1,8 +1,11 @@
 import * as fastGlob from 'fast-glob';
 import path from 'path';
+import type { Plugin } from 'rollup';
 import isString from 'lodash/isString';
 import partition from 'lodash/partition';
+
 import { name as pluginName } from '../package.json';
+import { RollupMultiInputOptions } from '../types';
 
 /**
  * default multi-input Options
@@ -13,7 +16,7 @@ const defaultOptions = {
 };
 
 // extract the output file name from a file name
-const outputFileName = (filePath) => filePath
+const outputFileName = (filePath: string) => filePath
   .replace(/\.[^/.]+$/, '')
   .replace(/\\/g, '/');
 
@@ -30,13 +33,13 @@ const outputFileName = (filePath) => filePath
  *  structure in the dist folder
  *
  *  @param {?Object} options
- *  @param {?FastGlob?.Options} options.glob - the fast-glob configuration object
+ *  @param {?FastGlob.Options} options.glob - the fast-glob configuration object
  *  @param {?string?} options.relative - the base path to remove in the dist folder
  *  @param {?TransformOutputPathFn?} options.transformOutputPath - callback function to
  *      transform the destination file name before generation
  *  @return {Plugin} - the rollup plugin config for enable support of multi-entry glob inputs
  * */
-export default (options = defaultOptions) => {
+export default function multiInput(options: RollupMultiInputOptions = defaultOptions): Plugin {
   const {
     glob: globOptions,
     relative = defaultOptions.relative,
@@ -76,4 +79,4 @@ export default (options = defaultOptions) => {
       };
     },
   });
-};
+}
