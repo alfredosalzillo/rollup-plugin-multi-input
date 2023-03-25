@@ -69,17 +69,23 @@ describe('rollup-plugin-multi-input', () => {
   });
   it('should resolve relative to "src" as default', async () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
-      input: ['src/**/*.js'],
+      input: ['test/fixtures/**/*.js'],
       plugins: [multiInput(), importJson()],
       external: externalDependencies,
     });
     const outputFilesWithNoRelativeOption = await generateOutputFileNames({
-      input: ['src/**/*.js'],
+      input: ['./test/fixtures/**/*.js'],
       plugins: [multiInput({}), importJson()],
       external: externalDependencies,
     });
-    expect(outputFilesWithNoOptions).toEqual(['plugin.js']);
-    expect(outputFilesWithNoRelativeOption).toEqual(['plugin.js']);
+    expect(outputFilesWithNoOptions).toEqual([
+      'test/fixtures/input1.js',
+      'test/fixtures/input2.js',
+    ]);
+    expect(outputFilesWithNoRelativeOption).toEqual([
+      'test/fixtures/input1.js',
+      'test/fixtures/input2.js',
+    ]);
   });
   it('should resolve non relative to "relative" options path to root', async () => {
     const outputFiles = await generateOutputFileNames({
@@ -96,7 +102,7 @@ describe('rollup-plugin-multi-input', () => {
     const outputFiles = await generateOutputFileNames({
       input: ['test/fixtures/**/*.js'],
       plugins: [multiInput({
-        transformOutputPath: (output, input) => `dest/${path.basename(output)}`,
+        transformOutputPath: (output) => `dest/${path.basename(output)}`,
       })],
       external: ['fast-glob', 'path'],
     });

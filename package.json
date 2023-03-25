@@ -1,15 +1,15 @@
 {
   "name": "rollup-plugin-multi-input",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "rollup plugin for bundling modular libraries",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/plugin.js",
-  "module": "src/plugin.js",
-  "esnext": "src/plugin.js",
+  "module": "dist/plugin.js",
+  "esnext": "dist/plugin.js",
   "scripts": {
-    "lint": "eslint src/plugin.js",
-    "build": "swc src/plugin.js --out-dir dist",
-    "generate-declaration": "jsdoc -t node_modules/tsd-jsdoc/dist -r ./dist/plugin.js -d ./dist/",
+    "lint": "eslint src/plugin.ts",
+    "build": "swc src/plugin.ts --out-dir dist",
+    "generate-declaration": "tsc src/plugin.ts --declaration --emitDeclarationOnly --esModuleInterop --lib esNext --outDir dist",
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run generate-declaration",
     "test": "jest --coverage"
@@ -52,22 +52,11 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^24.0.0",
     "jest": "^26.0.1",
-    "jsdoc": "^3.6.2",
     "rollup": "^2.0.2",
-    "tsd-jsdoc": "^2.1.3"
+    "tsc": "2.0.4",
+    "typescript": "5.0.2"
   },
   "dependencies": {
-    "core-js": "^3.1.3",
-    "fast-glob": "^3.0.0",
-    "lodash": "^4.17.11"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "transform": {
-      "^.+\\.(t|j)sx?$": [
-        "@swc/jest"
-      ]
-    }
+    "fast-glob": "3.2.12"
   }
 }
