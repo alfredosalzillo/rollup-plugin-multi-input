@@ -1,5 +1,5 @@
 name: CI/CD
-on: [ pull_request ]
+on: [ pull_request, push ]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
