@@ -7,6 +7,9 @@
   "exports": {
     ".": "./dist/plugin.cjs"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "lint": "eslint src/plugin.ts",
     "build": "swc src/plugin.ts --out-file dist/plugin.cjs",
