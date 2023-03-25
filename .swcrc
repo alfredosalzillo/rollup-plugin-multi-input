@@ -6,7 +6,12 @@
       "tsx": false,
       "decorators": true,
       "dynamicImport": true,
+      "esModuleInterop": true,
     },
     "target": "es2018"
   },
+  "module": {
+    "type": "commonjs",
+    "strict": false
+  }
 }

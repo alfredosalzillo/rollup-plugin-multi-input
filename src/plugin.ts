@@ -1,4 +1,4 @@
-import * as fastGlob from 'fast-glob';
+import fastGlob from 'fast-glob';
 import path from 'path';
 import type { Plugin } from 'rollup';
 import type FastGlob from 'fast-glob';

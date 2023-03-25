@@ -2,20 +2,20 @@
   "name": "rollup-plugin-multi-input",
   "version": "2.0.0",
   "description": "rollup plugin for bundling modular libraries",
-  "type": "module",
-  "main": "dist/plugin.js",
-  "module": "dist/plugin.js",
-  "esnext": "dist/plugin.js",
+  "type": "commonjs",
+  "main": "./dist/plugin.cjs",
+  "exports": {
+    ".": "./dist/plugin.cjs"
+  },
   "scripts": {
     "lint": "eslint src/plugin.ts",
-    "build": "swc src/plugin.ts --out-dir dist",
+    "build": "swc src/plugin.ts --out-file dist/plugin.cjs",
     "generate-declaration": "tsc src/plugin.ts --declaration --emitDeclarationOnly --esModuleInterop --lib esNext --outDir dist",
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run generate-declaration",
     "test": "jest --coverage"
   },
   "files": [
-    "src",
     "dist"
   ],
   "keywords": [
