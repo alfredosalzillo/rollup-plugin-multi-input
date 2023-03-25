@@ -1,8 +1,18 @@
 {
+  "$schema": "https://json.schemastore.org/swcrc",
   "jsc": {
-    "target": "es5"
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": true,
+      "dynamicImport": true,
+      "esModuleInterop": true
+    },
+    "target": "es2018"
   },
   "module": {
-    "type": "commonjs"
+    "type": "commonjs",
+    "strict": false,
+    "noInterop": false
   }
 }
