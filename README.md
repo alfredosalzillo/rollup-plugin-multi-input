@@ -105,3 +105,8 @@ export default {
 ### glob `{}`
 [fast-glob](https://github.com/mrmlnc/fast-glob) object configuration.
 
+## Blobs
+[![Blob](https://blobs-six.vercel.app/api/blob?width=150&height=150&s=1)](https://github.com/alfredosalzillo/blobs)
+[![Blob](https://blobs-six.vercel.app/api/blob?width=150&height=150&s=2)](https://github.com/alfredosalzillo/blobs)
+[![Blob](https://blobs-six.vercel.app/api/blob?width=150&height=150&s=3)](https://github.com/alfredosalzillo/blobs)
+[![Blob](https://blobs-six.vercel.app/api/blob?width=150&height=150&s=4)](https://github.com/alfredosalzillo/blobs)
