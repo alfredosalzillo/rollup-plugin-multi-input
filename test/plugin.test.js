@@ -1,4 +1,5 @@
-import { rollup } from 'rollup';
+import { rollup as rollup2 } from 'rollup2';
+import { rollup as rollup3 } from 'rollup3';
 import importJson from '@rollup/plugin-json';
 import path from 'path';
 import multiInput from '../src/plugin';
@@ -11,20 +12,20 @@ const expectedOutput = [
 const externalDependencies = [
   'fast-glob',
   'path',
-  'lodash/isString',
-  'lodash/partition',
-  'lodash/fromPairs',
 ];
 
-const generateBundle = (options) => rollup(options)
-  .then((bundle) => bundle.generate({
-    format: 'cjs',
-  }));
+describe.each([
+  ['rollup 2', rollup2],
+  ['rollup 3', rollup3],
+])('rollup-plugin-multi-input using %s', (_, rollup) => {
+  const generateBundle = (options) => rollup(options)
+    .then((bundle) => bundle.generate({
+      format: 'cjs',
+    }));
 
-const generateOutputFileNames = (options) => generateBundle(options)
-  .then(({ output }) => output.map((module) => module.fileName).sort());
+  const generateOutputFileNames = (options) => generateBundle(options)
+    .then(({ output }) => output.map((module) => module.fileName).sort());
 
-describe('rollup-plugin-multi-input', () => {
   it('should have name rollup-plugin-multi-input', async () => {
     const plugin = multiInput({ relative: './test' });
     expect('name' in plugin).toBeTruthy();
@@ -65,7 +66,7 @@ describe('rollup-plugin-multi-input', () => {
       }],
       plugins: [multiInput({ relative: './test' })],
     });
-    await expect(bundle).rejects.toThrow('Could not resolve entry module (path/to/test.js).');
+    await expect(bundle).rejects.toThrow(/^Could not resolve entry module/);
   });
   it('should resolve relative to "src" as default', async () => {
     const outputFilesWithNoOptions = await generateOutputFileNames({
