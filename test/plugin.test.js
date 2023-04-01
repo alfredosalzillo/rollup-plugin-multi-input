@@ -12,9 +12,6 @@ const expectedOutput = [
 const externalDependencies = [
   'fast-glob',
   'path',
-  'lodash/isString',
-  'lodash/partition',
-  'lodash/fromPairs',
 ];
 
 describe.each([
