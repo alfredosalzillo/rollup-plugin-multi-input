@@ -6,6 +6,13 @@
 [![npm version](https://badge.fury.io/js/rollup-plugin-multi-input.svg)](https://badge.fury.io/js/rollup-plugin-multi-input)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+
+> :warning: **Do you really need rollup-plugin-multi-input?**
+>
+> Take a look at the rollup [preserveModules](https://rollupjs.org/configuration-options/#output-preservemodules) and [preserveModulesRoot](https://rollupjs.org/configuration-options/#output-preservemodulesroot) options.
+
+
+
 A rollup plugin to bundle modular libraries with sub directories.
 
 * Use multiple entry points.
