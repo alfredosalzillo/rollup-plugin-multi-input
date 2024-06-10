@@ -5,7 +5,10 @@
   "type": "commonjs",
   "main": "./dist/plugin.cjs",
   "exports": {
-    ".": "./dist/plugin.cjs"
+    ".": {
+      "default": "./dist/plugin.cjs",
+      "types": "./dist/plugin.d.ts"
+    }
   },
   "engines": {
     "node": ">=16"
