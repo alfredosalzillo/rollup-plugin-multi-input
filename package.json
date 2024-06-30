@@ -1,18 +1,18 @@
 {
-  "name": "rollup-plugin-multi-input",
+  "name": "@ayan4m1/rollup-plugin-multi-input",
   "version": "2.0.0",
-  "description": "rollup plugin for bundling modular libraries",
-  "type": "commonjs",
-  "main": "./dist/plugin.cjs",
+  "description": "A rollup plugin which allows 1:1 mapping of input to output files.",
+  "type": "module",
+  "module": "./dist/plugin.js",
   "exports": {
-    ".": "./dist/plugin.cjs"
+    ".": "./dist/plugin.js"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "lint": "eslint src/plugin.ts",
-    "build": "swc src/plugin.ts --out-file dist/plugin.cjs",
+    "build": "swc src/plugin.ts --out-file dist/plugin.js",
     "generate-declaration": "tsc src/plugin.ts --declaration --emitDeclarationOnly --esModuleInterop --lib esNext --outDir dist",
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run generate-declaration",
@@ -32,14 +32,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/alfredosalzillo/rollup-plugin-multi-input.git"
+    "url": "https://github.com/ayan4m1/rollup-plugin-multi-input.git"
   },
   "author": "alfredo salzillo <alfredosalzillo93@gmail.com>",
+  "maintainers": [
+    "ayan4m1 <andrew@bulletlogic.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alfredosalzillo/rollup-plugin-multi-input/issues"
+    "url": "https://github.com/ayan4m1/rollup-plugin-multi-input/issues"
   },
-  "homepage": "https://github.com/alfredosalzillo/rollup-plugin-multi-input#readme",
+  "homepage": "https://github.com/ayan4m1/rollup-plugin-multi-input#readme",
   "devDependencies": {
     "@babel/runtime": "^7.14.0",
     "@rollup/plugin-json": "^4.0.2",

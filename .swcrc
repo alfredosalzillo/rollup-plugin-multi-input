@@ -5,13 +5,12 @@
       "syntax": "typescript",
       "tsx": false,
       "decorators": true,
-      "dynamicImport": true,
-      "esModuleInterop": true
+      "dynamicImport": true
     },
-    "target": "es2018"
+    "target": "es2022"
   },
   "module": {
-    "type": "commonjs",
+    "type": "es6",
     "strict": false,
     "noInterop": false
   }

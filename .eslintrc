@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "airbnb-base",
-    "airbnb-typescript/base"
-  ],
+  "extends": ["airbnb-base", "airbnb-typescript/base"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -10,10 +7,9 @@
     "node": true,
     "jest": true
   },
-  "overrides": [
-    {
-      "files": ["*.js"]
-    }
-  ],
-  "plugins": ["jest"]
+  "plugins": ["jest"],
+  "rules": {
+    "linebreak-style": "off",
+    "implicit-arrow-linebreak": "off"
+  }
 }

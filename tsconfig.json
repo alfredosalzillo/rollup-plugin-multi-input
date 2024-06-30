@@ -2,9 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "moduleResolution": "node",
     "noEmit": true,
     "noEmitOnError": false,
@@ -14,10 +12,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2019",
+    "target": "es2022"
   },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "exclude": ["dist", "node_modules"]
 }
