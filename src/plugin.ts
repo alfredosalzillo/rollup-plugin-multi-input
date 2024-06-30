@@ -3,7 +3,7 @@ import path from 'path';
 import type { Plugin } from 'rollup';
 import type FastGlob from 'fast-glob';
 
-const pluginName = 'rollup-plugin-multi-input';
+const pluginName = '@ayan4m1/rollup-plugin-multi-input';
 
 const isString = (value: any): value is string => typeof value === 'string';
 
@@ -16,14 +16,14 @@ const defaultOptions = {
 };
 
 // extract the output file name from a file name
-const outputFileName = (filePath: string) => filePath
-  .replace(/\.[^/.]+$/, '')
-  .replace(/\\/g, '/');
+
+const outputFileName = (filePath: string) =>
+  filePath.replace(/\.[^/.]+$/, '').replace(/\\/g, '/');
 
 export type MultiInputOptions = {
-  glob?: FastGlob.Options
-  relative?: string
-  transformOutputPath?: (path: string, fileName: string) => string
+  glob?: FastGlob.Options;
+  relative?: string;
+  transformOutputPath?: (path: string, fileName: string) => string;
 };
 
 /**
@@ -36,7 +36,7 @@ const multiInput = (options: MultiInputOptions = defaultOptions): Plugin => {
     relative = defaultOptions.relative,
     transformOutputPath,
   } = options;
-  return ({
+  return {
     name: pluginName,
     options(conf) {
       // flat to enable input to be a string or an array
@@ -51,27 +51,29 @@ const multiInput = (options: MultiInputOptions = defaultOptions): Plugin => {
         .map((name) => {
           const filePath = path.relative(relative, name);
           const isRelative = !filePath.startsWith(`..${path.sep}`);
-          const relativeFilePath = (isRelative
+          const relativeFilePath = isRelative
             ? filePath
-            : path.relative(`.${path.sep}`, name));
+            : path.relative(`.${path.sep}`, name);
           if (transformOutputPath) {
-            return [outputFileName(transformOutputPath(relativeFilePath, name)), name];
+            return [
+              outputFileName(transformOutputPath(relativeFilePath, name)),
+              name,
+            ];
           }
           return [outputFileName(relativeFilePath), name];
         });
-      const input = Object
-        .assign(
-          {},
-          Object.fromEntries(entries),
-          // add no globs input to the result
-          ...others,
-        );
+      const input = Object.assign(
+        {},
+        Object.fromEntries(entries),
+        // add no globs input to the result
+        ...others,
+      );
       // return the new configuration with the glob input and the non string inputs
       return {
         ...conf,
         input,
       };
     },
-  });
+  };
 };
 export default multiInput;
