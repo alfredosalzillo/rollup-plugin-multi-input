@@ -1,10 +1,10 @@
 # rollup-plugin-multi-input
 
-[![CD](https://github.com/alfredosalzillo/rollup-plugin-multi-input/workflows/CD/badge.svg)](https://github.com/alfredosalzillo/rollup-plugin-multi-input/actions/workflows/CD.yml)
-[![CI](https://github.com/alfredosalzillo/rollup-plugin-multi-input/workflows/CI/badge.svg)](https://github.com/alfredosalzillo/rollup-plugin-multi-input/actions/workflows/CI.yml)
-[![codecov](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input/branch/main/graph/badge.svg)](https://codecov.io/gh/alfredosalzillo/rollup-plugin-multi-input)
+<!-- [![CD](https://github.com/ayan4m1/rollup-plugin-multi-input/workflows/CD/badge.svg)](https://github.com/ayan4m1/rollup-plugin-multi-input/actions/workflows/CD.yml)
+[![CI](https://github.com/ayan4m1/rollup-plugin-multi-input/workflows/CI/badge.svg)](https://github.com/ayan4m1/rollup-plugin-multi-input/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/ayan4m1/rollup-plugin-multi-input/branch/main/graph/badge.svg)](https://codecov.io/gh/ayan4m1/rollup-plugin-multi-input) -->
+
 [![npm version](https://badge.fury.io/js/rollup-plugin-multi-input.svg)](https://badge.fury.io/js/rollup-plugin-multi-input)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 > :warning: **Do you really need rollup-plugin-multi-input?**
 >
@@ -21,8 +21,8 @@ A rollup plugin to bundle modular libraries with sub directories.
 Install via npm or yarn.
 
 ```bash
-npm i -D rollup-plugin-multi-input
-yarn add rollup-plugin-multi-input
+npm i -D @ayan4m1/rollup-plugin-multi-input
+yarn add @ayan4m1/rollup-plugin-multi-input
 ```
 
 ## Setup
