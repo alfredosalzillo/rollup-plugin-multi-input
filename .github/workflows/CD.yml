@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - uses: actions/checkout@v3
       - name: build
         run: |
@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - uses: actions/checkout@v3
       - name: build
         run: |
@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - uses: actions/checkout@v3
       - name: build
         run: |
