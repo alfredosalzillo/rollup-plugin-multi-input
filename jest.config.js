@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   coverageDirectory: './coverage/',
   collectCoverage: true,
   transform: {
