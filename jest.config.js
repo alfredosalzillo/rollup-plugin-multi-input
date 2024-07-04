@@ -1,7 +1,9 @@
-module.exports = {
-  coverageDirectory: './coverage/',
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  coverageDirectory: './coverage',
   collectCoverage: true,
   transform: {
-    '^.+\\.(t|j)sx?$': '@swc/jest',
+    '\\.[jt]sx?$': 'babel-jest',
   },
 };

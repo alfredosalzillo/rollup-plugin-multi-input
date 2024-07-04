@@ -11,11 +11,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "eslint src/plugin.ts",
-    "build": "swc src/plugin.ts --out-file dist/plugin.js",
-    "generate-declaration": "tsc src/plugin.ts --declaration --emitDeclarationOnly --esModuleInterop --lib esNext --outDir dist",
+    "lint": "eslint src/**/*.ts",
+    "build": "tsc",
     "prepare": "npm run lint && npm run build",
-    "prepublishOnly": "npm run generate-declaration",
     "test": "jest --coverage"
   },
   "files": [
@@ -44,27 +42,32 @@
   },
   "homepage": "https://github.com/ayan4m1/rollup-plugin-multi-input#readme",
   "devDependencies": {
-    "@babel/runtime": "^7.14.0",
-    "@rollup/plugin-json": "^4.0.2",
-    "@swc/cli": "0.1.62",
-    "@swc/core": "1.3.42",
-    "@swc/jest": "0.2.24",
-    "@types/jest": "29.5.0",
-    "@typescript-eslint/eslint-plugin": "5.56.0",
-    "@typescript-eslint/parser": "5.56.0",
-    "eslint": "8.36.0",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "@typescript-eslint/parser": "7.15.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "8.57.0",
     "eslint-config-airbnb-base": "15.0.0",
-    "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-jest": "27.2.1",
-    "jest": "29.5.0",
-    "rollup": "^4.18.0",
-    "rollup2": "npm:rollup@2.0.2",
-    "rollup3": "npm:rollup@3.20.2",
+    "eslint-config-airbnb-typescript": "18.0.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-jest": "28.6.0",
+    "jest": "29.7.0",
+    "jest-environment-node": "29.7.0",
+    "rollup": "4.18.0",
+    "rollup2": "npm:rollup@2.79.1",
+    "rollup3": "npm:rollup@3.29.4",
+    "ts-jest": "^29.1.5",
     "tsc": "2.0.4",
-    "typescript": "5.0.2"
+    "typescript": "5.5.3"
   },
   "dependencies": {
-    "fast-glob": "3.2.12"
+    "fast-glob": "3.3.2"
+  },
+  "peerDependencies": {
+    "rollup": ">=2.x"
   }
 }

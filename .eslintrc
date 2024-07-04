@@ -1,5 +1,6 @@
 {
   "extends": ["airbnb-base", "airbnb-typescript/base"],
+  "ignorePatterns": ["jest.config.js", "babel.config.cjs", "*.test.js"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },

@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "declaration": true,
     "esModuleInterop": true,
-    "lib": ["ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "lib": ["ESNext", "ESNext.Decorators"],
     "moduleResolution": "node",
-    "noEmit": true,
-    "noEmitOnError": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "pretty": true,
     "resolveJsonModule": true,
-    "sourceMap": true,
     "strict": true,
     "target": "es2022"
   },
+  "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }
