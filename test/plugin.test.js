@@ -1,5 +1,6 @@
 import { rollup as rollup2 } from 'rollup2';
 import { rollup as rollup3 } from 'rollup3';
+import { rollup as rollup4 } from 'rollup4';
 import importJson from '@rollup/plugin-json';
 import path from 'path';
 import multiInput from '../src/plugin';
@@ -17,6 +18,7 @@ const externalDependencies = [
 describe.each([
   ['rollup 2', rollup2],
   ['rollup 3', rollup3],
+  ['rollup 4', rollup4],
 ])('rollup-plugin-multi-input using %s', (_, rollup) => {
   const generateBundle = (options) => rollup(options)
     .then((bundle) => bundle.generate({
