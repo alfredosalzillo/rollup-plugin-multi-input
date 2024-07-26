@@ -5,6 +5,12 @@ import type FastGlob from 'fast-glob';
 
 const pluginName = 'rollup-plugin-multi-input';
 
+const doYouNeedRollupMessage = `
+  \u001b[31mATTENTION:\u001b[0m Do you still need \u001b[34m${pluginName}\u001b[0m?
+  Since Rollup 3, the \u001b[32m[preserveModules](https://rollupjs.org/configuration-options/#output-preservemodules)\u001b[0m
+  and \u001b[32m[preserveModulesRoot](https://rollupjs.org/configuration-options/#output-preservemodulesroot)\u001b[0m options are available,
+  which can often eliminate the necessity of \u001b[34m${pluginName}\u001b[0m.
+`;
 const isString = (value: any): value is string => typeof value === 'string';
 
 /**
@@ -38,6 +44,11 @@ const multiInput = (options: MultiInputOptions = defaultOptions): Plugin => {
   } = options;
   return ({
     name: pluginName,
+    buildStart() {
+      if (this.info) {
+        this.info(doYouNeedRollupMessage);
+      }
+    },
     options(conf) {
       // flat to enable input to be a string or an array
       const inputs = [conf.input].flat();
