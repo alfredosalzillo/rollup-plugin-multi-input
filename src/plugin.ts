@@ -30,6 +30,7 @@ export type MultiInputOptions = {
   glob?: FastGlob.Options
   relative?: string
   transformOutputPath?: (path: string, fileName: string) => string
+  hideBuildStartMessage?: boolean
 };
 
 /**
@@ -41,11 +42,12 @@ const multiInput = (options: MultiInputOptions = defaultOptions): Plugin => {
     glob: globOptions,
     relative = defaultOptions.relative,
     transformOutputPath,
+    hideBuildStartMessage,
   } = options;
   return ({
     name: pluginName,
     buildStart() {
-      if (this.info) {
+      if (this.info && hideBuildStartMessage !== false) {
         this.info(doYouNeedRollupMessage);
       }
     },
