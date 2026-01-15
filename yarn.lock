@@ -338,13 +338,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.28.6":
-  version: 7.28.6
-  resolution: "@babel/runtime@npm:7.28.6"
-  checksum: 10c0/358cf2429992ac1c466df1a21c1601d595c46930a13c1d4662fde908d44ee78ec3c183aaff513ecb01ef8c55c3624afe0309eeeb34715672dbfadb7feedb2c0d
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.28.6":
   version: 7.28.6
   resolution: "@babel/template@npm:7.28.6"
@@ -4413,7 +4406,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rollup-plugin-multi-input@workspace:."
   dependencies:
-    "@babel/runtime": "npm:^7.28.6"
     "@biomejs/biome": "npm:^2.3.11"
     "@rollup/plugin-json": "npm:^6.1.0"
     "@swc/cli": "npm:0.7.10"
