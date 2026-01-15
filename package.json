@@ -62,8 +62,7 @@
     "rollup2": "npm:rollup@2.0.2",
     "rollup3": "npm:rollup@3.20.2",
     "rollup4": "npm:rollup@4.55.1",
-    "tsc": "2.0.4",
-    "typescript": "5.9.3"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "fast-glob": "3.3.3"
