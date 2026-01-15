@@ -7,10 +7,10 @@ jobs:
       matrix:
         os: [ ubuntu-latest, macOS-latest ]
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - uses: actions/checkout@v3
+          node-version: 24
+      - uses: actions/checkout@v4
       - name: build
         run: |
           yarn install --frozen-lockfile
@@ -22,10 +22,10 @@ jobs:
         os: [ ubuntu-latest, macOS-latest ]
     needs: build
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - uses: actions/checkout@v3
+          node-version: 24
+      - uses: actions/checkout@v4
       - name: build
         run: |
           yarn install --frozen-lockfile
