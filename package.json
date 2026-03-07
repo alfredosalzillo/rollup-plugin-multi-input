@@ -45,6 +45,9 @@
   "bugs": {
     "url": "https://github.com/alfredosalzillo/rollup-plugin-multi-input/issues"
   },
+  "funding": {
+    "url": "https://github.com/sponsors/alfredosalzillo"
+  },
   "homepage": "https://github.com/alfredosalzillo/rollup-plugin-multi-input#readme",
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
