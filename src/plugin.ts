@@ -1,6 +1,6 @@
 import path from "node:path";
 import type FastGlob from "fast-glob";
-import fastGlob from "fast-glob";
+import * as fastGlob from "fast-glob";
 import type { Plugin } from "rollup";
 
 const pluginName = "rollup-plugin-multi-input";

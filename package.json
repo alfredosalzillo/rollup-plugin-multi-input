@@ -4,11 +4,11 @@
   "description": "rollup plugin for bundling modular libraries",
   "type": "module",
   "main": "./dist/plugin.cjs",
-  "module": "./dist/plugin.mjs",
+  "module": "./dist/plugin.js",
   "types": "./dist/plugin.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/plugin.mjs",
+      "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs"
     }
   },
@@ -19,12 +19,9 @@
     "lint": "biome lint src/plugin.ts",
     "format": "biome format src/plugin.ts --write",
     "check": "biome check src/plugin.ts",
-    "build:mjs": "swc src/plugin.ts -o dist/plugin.mjs -C module.type=es6",
-    "build:cjs": "swc src/plugin.ts -o dist/plugin.cjs -C module.type=commonjs",
-    "build": "npm run build:mjs && npm run build:cjs",
-    "generate-declaration": "tsc src/plugin.ts --declaration --emitDeclarationOnly --esModuleInterop --lib esNext --outDir dist",
+    "build": "rollup --config rollup.config.ts",
     "prepare": "npm run lint && npm run build",
-    "prepublishOnly": "npm run generate-declaration",
+    "prepublishOnly": "npm run build",
     "test": "vitest run --coverage"
   },
   "files": [
@@ -52,11 +49,13 @@
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
     "@biomejs/biome": "^2.4.6",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-swc": "^0.4.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@swc/cli": "0.8.0",
-    "@swc/core": "1.15.18",
     "@types/node": "^25.3.5",
     "rollup": "4.59.0",
+    "rollup-plugin-dts": "^6.2.3",
     "rollup2": "npm:rollup@2.0.2",
     "rollup3": "npm:rollup@3.20.2",
     "rollup4": "npm:rollup@4.55.1",
