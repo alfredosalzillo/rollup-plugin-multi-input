@@ -19,7 +19,7 @@
     "lint": "biome lint src/plugin.ts",
     "format": "biome format src/plugin.ts --write",
     "check": "biome check src/plugin.ts",
-    "build": "rollup --config rollup.config.ts",
+    "build": "rollup --config rollup.config.mjs",
     "prepare": "npm run lint && npm run build",
     "prepublishOnly": "npm run build",
     "test": "vitest run --coverage"

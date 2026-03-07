@@ -1,10 +1,9 @@
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import swc from "@rollup/plugin-swc";
-import type { RollupOptions } from "rollup";
 import { dts } from "rollup-plugin-dts";
 
-const config: RollupOptions[] = [
+const config = [
   {
     input: "src/plugin.ts",
     output: [
