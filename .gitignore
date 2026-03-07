@@ -1,8 +1,5 @@
 node_modules
 .idea
-./dist
+/dist
 package-lock.json
 coverage
-/dist/plugin.cjs
-/dist/plugin.d.ts
-/dist/plugin.mjs
