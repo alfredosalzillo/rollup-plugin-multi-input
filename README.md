@@ -10,6 +10,37 @@
 > :warning: **Do you really need rollup-plugin-multi-input?**
 >
 > Take a look at the rollup [preserveModules](https://rollupjs.org/configuration-options/#output-preservemodules) and [preserveModulesRoot](https://rollupjs.org/configuration-options/#output-preservemodulesroot) options.
+>
+> If your project uses **Node.js 22 or newer**, you can migrate to [modular-library](https://github.com/alfredosalzillo/modular-library), which includes a Rollup plugin and can be used instead of `rollup-plugin-multi-input`.
+
+### Migration example (Node.js >= 22)
+From:
+```js
+import multiInput from 'rollup-plugin-multi-input';
+
+export default {
+  input: ['src/**/*.js'],
+  output: {
+    format: 'esm',
+    dir: 'dist'
+  },
+  plugins: [multiInput()],
+};
+```
+
+To:
+```js
+import modularLibrary from 'modular-library/rollup';
+
+export default {
+  input: ['src/**/*.js'],
+  output: {
+    format: 'esm',
+    dir: 'dist'
+  },
+  plugins: [modularLibrary()],
+};
+```
 
 
 
