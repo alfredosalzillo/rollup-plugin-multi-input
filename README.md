@@ -6,6 +6,11 @@
 [![npm version](https://badge.fury.io/js/rollup-plugin-multi-input.svg)](https://badge.fury.io/js/rollup-plugin-multi-input)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
+> ⚠️ **Deprecation notice**
+>
+> `rollup-plugin-multi-input` will be deprecated in the future.
+> We are migrating to [`modular-library`](https://github.com/alfredosalzillo/modular-library).
+
 
 > :warning: **Do you really need rollup-plugin-multi-input?**
 >

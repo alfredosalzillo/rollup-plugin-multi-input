@@ -5,6 +5,11 @@ import type { Plugin } from "rollup";
 
 const pluginName = "rollup-plugin-multi-input";
 
+const deprecationNoticeMessage = `
+  \u001b[33mDEPRECATION NOTICE:\u001b[0m \u001b[34m${pluginName}\u001b[0m will be deprecated in the future.
+  Please migrate, if possible, to \u001b[36mmodular-library\u001b[0m: https://github.com/alfredosalzillo/modular-library
+`;
+
 const doYouNeedRollupMessage = `
   \u001b[31mATTENTION:\u001b[0m Do you still need \u001b[34m${pluginName}\u001b[0m?
   Since Rollup 3, the \u001b[32m[preserveModules](https://rollupjs.org/configuration-options/#output-preservemodules)\u001b[0m
@@ -47,6 +52,7 @@ const multiInput = (options: MultiInputOptions = defaultOptions): Plugin => {
 		name: pluginName,
 		buildStart() {
 			if (this.info && hideBuildStartMessage !== false) {
+				this.info(deprecationNoticeMessage);
 				this.info(doYouNeedRollupMessage);
 			}
 		},
